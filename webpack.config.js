@@ -23,26 +23,31 @@ module.exports = {
     })
   ],
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: [
-          /node_modules/,
-          /spec/
-        ],
-        loader: "eslint-loader"
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.(?:png|jpg|svg)$/,
-              loader: 'url-loader'
-      }
-    ]
-  }
+   rules: [
+     {
+       test: /\.css$/,
+       use: [
+         'style-loader',
+         'css-loader'
+       ]
+     },
+     {
+       test: /\.js$/,
+       exclude: /node_modules/,
+       loader: "eslint-loader"
+     },
+     // new rule
+     {
+       test: /\.js$/,
+       exclude: [
+         /node_modules/,
+         /spec/
+       ],
+       loader: "babel-loader",
+       options: {
+         presets: ['es2015']
+       }
+     }
+   ]
+ }
 };

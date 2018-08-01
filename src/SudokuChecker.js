@@ -1,37 +1,53 @@
-// make an empty 9x9 array
-// var sudokuBoard = [...Array(9)].map(e => Array(9));
-
-export function arraysEqual(a, b) {
-  if (a === b) return true;
-  if (a == null || b == null) return false;
-  if (a.length != b.length) return false;
-
-  for (var i = 0; i < a.length; ++i) {
-    if (a[i] !== b[i]) return false;
-  }
-  return true;
-}
-
 export function sudokuChecker(sudokuArray){
-// debugger;
-  var numbers = [1,2,3,4,5,6,7,8,9];
-  // var row = new Array(9);
+  const numbers = [1,2,3,4,5,6,7,8,9];
+  let row = new Array(9);
+  let n = 0;
 
-  sudokuArray.forEach(function(column) {
-    // debugger;
-    console.log(column.sort().join(""));
-    if(column.sort().join("") != numbers.join("")) {
-      return false;
-    }
-  });
-
-  // for (var i = 0; i < sudokuArray.length; i++) {
-  //   for (var j = 0; j < sudokuArray.length; j++) {
-  //     row[j] = sudokuArray[j][i];
-  //   }
-  //   if(!arraysEqual(row.sort(), numbers)) {
+  // // test for row
+  // for(let i = 0; i < sudokuArray.length; i++) {
+  //   row = sudokuArray[i].slice();
+  //   if(row.sort().join("") != numbers.join("")) {
   //     return false;
   //   }
   // }
+
+  // // test for column
+  // for (let i = 0; i < sudokuArray.length; i++) {
+  //   for (let j = 0; j < sudokuArray.length; j++) {
+  //     row[j] = sudokuArray[j][i];
+  //   }
+  //   if(row.sort().join("") != numbers.join("")) {
+  //     return false;
+  //   }
+  // }
+
+  // test for column
+  for (let i = 0; i < 9; i++) {
+    n = 0
+    for (let j = 0; j < 3; j++) {
+      for (let k = 0; k < 3; k++) {
+        row[n] = sudokuArray[i][j][k];
+        n++;
+      }
+    }
+    if(row.sort().join("") != numbers.join("")){
+      return false;
+    }
+  }
+
+  // test for block
+  for (let i = 0; i < sudokuArray.length; i++) {
+    n = 0
+    for (let j = 0; j < 3; j++) {
+      for (let k = 0; k < 3; k++) {
+        row[n] = sudokuArray[i][j][k];
+        n++;
+      }
+    }
+    if(row.sort().join("") != numbers.join("")){
+      return false;
+    }
+  }
+
   return true;
 }
