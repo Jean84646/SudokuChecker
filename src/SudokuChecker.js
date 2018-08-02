@@ -15,12 +15,12 @@ export class SudokuSolver {
   }
 
   getRow(rowNumber) {
-    return this.sudokuArray.slice((rowNumber-1)*9, ((rowNumber-1)*9)+9);
+    return this.sudokuArray.slice((rowNumber)*9, ((rowNumber)*9)+9);
   }
 
   getColumn(colNumber) {
     let row = [];
-    for (let i = (colNumber - 1); i < this.sudokuArray.length; i+=9) {
+    for (let i = colNumber; i < this.sudokuArray.length; i+=9) {
       row.push(this.sudokuArray[i]);
     }
     return row;
@@ -29,7 +29,6 @@ export class SudokuSolver {
   getBlock(jenny) {
     let row = [];
     let rowIndex = 0;
-    jenny--;
     if (jenny < 6 && jenny > 2) {
       rowIndex = 1;
       jenny-=3;
@@ -81,12 +80,12 @@ export class SudokuSolver {
   ultimateSolver(emptyLocations) {
     let limit = 9;
     let value = 0;
-    let found, index, row, col;
+    let found, index, row, col, block;
     for (let i = 0; i < emptyLocations.length;) {
       index = emptyLocations[i];
       row = Math.floor(index/9);
       col = index%9;
-      block = (Math.floor(row/3)*3) + Math.floor((col/3)) + 1;
+      block = (Math.floor(row/3)*3) + Math.floor(col/3) + 1;
       value = this.sudokuArray[index] + 1;
       found = false;
       while(!found && value <= limit) {

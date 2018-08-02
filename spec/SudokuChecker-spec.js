@@ -26,15 +26,15 @@ describe('SudokuChecker', function() {
   });
 
   it('should get the row given a row number', function(){
-    expect(sudokuBoard.getRow(5)).toEqual([4,2,6,8,5,3,7,9,1]);
+    expect(sudokuBoard.getRow(4)).toEqual([4,2,6,8,5,3,7,9,1]);
   });
 
   it('should get the column given a column number', function(){
-    expect(sudokuBoard.getColumn(5)).toEqual([7,9,4,6,5,2,3,1,8]);
+    expect(sudokuBoard.getColumn(4)).toEqual([7,9,4,6,5,2,3,1,8]);
   });
 
   it('should get the block given a block number', function(){
-    expect(sudokuBoard.getBlock(5)).toEqual([7,6,1,8,5,3,9,2,4]);
+    expect(sudokuBoard.getBlock(4)).toEqual([7,6,1,8,5,3,9,2,4]);
   });
 
   it('should fail since block is not 1-9', function(){
