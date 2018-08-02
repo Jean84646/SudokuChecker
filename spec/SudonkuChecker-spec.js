@@ -14,6 +14,19 @@ describe('SudokuChecker', function() {
     expect(sudokuChecker(board)).toEqual(true);
   });
 
+  it('should fail since block is not 1-9', function(){
+    var board = [1,2,3,4,5,6,7,8,9,
+                 2,3,4,5,6,7,8,9,1,
+                 3,4,5,6,7,8,9,1,2,
+                 4,5,6,7,8,9,1,2,3,
+                 5,6,7,8,9,1,2,3,4,
+                 6,7,8,9,1,2,3,4,5,
+                 7,8,9,1,2,3,4,5,6,
+                 8,9,1,2,3,4,5,6,7,
+                 9,1,2,3,4,5,6,7,8];
+    expect(sudokuChecker(board)).toEqual(false);
+  });
+
   it('should fail since one row is not 1-9', function(){
     var board = [1,2,3,4,5,6,7,8,9,
                  2,3,4,5,6,7,8,9,1,
@@ -24,7 +37,7 @@ describe('SudokuChecker', function() {
                  7,8,9,1,2,3,4,5,6,
                  8,9,1,2,3,4,5,6,7,
                  9,9,9,9,9,9,9,9,8];
-    expect(sudokuChecker(board)).toEqual(true);
+    expect(sudokuChecker(board)).toEqual(false);
   });
 
   it('should fail since one column is not 1-9', function(){
@@ -37,7 +50,7 @@ describe('SudokuChecker', function() {
                  7,8,6,1,2,3,4,5,9,
                  8,7,1,2,3,4,5,6,9,
                  8,1,2,3,4,5,6,7,9];
-    expect(sudokuChecker(board)).toEqual(true);
+    expect(sudokuChecker(board)).toEqual(false);
   });
 
   // it('should check all row, column, and block to be 1-9', function(){

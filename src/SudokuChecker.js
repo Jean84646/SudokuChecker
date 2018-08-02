@@ -44,7 +44,6 @@ export function sudokuChecker(sudokuArray){
     for (let j = i; j < sudokuArray.length; j += 27) {
       row = [];
       row = row.concat(sudokuArray.slice(j, j+3)).concat(sudokuArray.slice(j+9, j+12)).concat(sudokuArray.slice(j+18, j+21));
-      console.log(row);
       if(row.sort().join("") != numbers.join("")){
         return false;
       }
