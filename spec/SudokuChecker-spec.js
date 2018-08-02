@@ -20,7 +20,7 @@ describe('SudokuChecker', function() {
     let row = [0,3,4,6,0,8,0,1,0];
     expect(sudokuBoard.checkValue(row, 7)).toEqual(true);
   });
-  
+
   it('should check all row, column, and block to be 1-9', function(){
     expect(sudokuBoard.sudokuChecker()).toEqual(true);
   });

@@ -77,6 +77,23 @@ export class SudokuSolver {
     }
     return storedLocations;
   }
+
+  ultimateSolver(emptyLocations) {
+    let limit = 9;
+    let value = 0;
+    let found, index, row, col;
+    for (let i = 0; i < emptyLocations.length;) {
+      index = emptyLocations[i];
+      row = Math.floor(index/9);
+      col = index%9;
+      block = (Math.floor(row/3)*3) + Math.floor((col/3)) + 1;
+      value = this.sudokuArray[index] + 1;
+      found = false;
+      while(!found && value <= limit) {
+        if (this.checkValue())
+      }
+    }
+  }
 }
 
 // Other ways to check
